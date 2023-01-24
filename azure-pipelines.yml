@@ -16,7 +16,7 @@ steps:
 
 - task: Gradle@2
   inputs:
-    workingDirectory: ''
+    workingDirectory: 'AndroidApps/MyApp'
     gradleWrapperFile: 'gradlew'
     gradleOptions: '-Xmx3072m'
     javaHomeOption: 'JDKVersion'
