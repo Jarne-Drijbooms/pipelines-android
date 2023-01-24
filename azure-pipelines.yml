@@ -13,20 +13,11 @@ steps:
     versionSpec: '11'
     jdkArchitectureOption: 'x64'
     jdkSourceOption: 'PreInstalled'
-- task: Gradle@3
-  inputs:
-    gradleWrapperFile: 'gradlew'
-    tasks: 'build'
-    publishJUnitResults: true
-    testResultsFiles: '**/TEST-*.xml'
-    javaHomeOption: 'JDKVersion'
-    sonarQubeRunAnalysis: false
-    spotBugsAnalysis: false
 
 - task: Gradle@2
   inputs:
-    workingDirectory: ''
-    gradleWrapperFile: 'gradlew'
+    workingDirectory: 'AndroidApps/MyApp'
+    gradleWrapperFile: 'AndroidApps/MyApp/gradlew'
     gradleOptions: '-Xmx3072m'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.8'
@@ -48,3 +39,13 @@ steps:
     artifactName: 'drop'
     artifactType: 'container'
   displayName: Publish artifacts
+
+#- task: AndroidSigning@2
+#  inputs:
+#    apkFiles: '**/*.apk'
+#    jarsign: true
+#    jarsignerKeystoreFile: 'pathToYourKeystoreFile'
+#    jarsignerKeystorePassword: '$(jarsignerKeystorePassword)'
+#    jarsignerKeystoreAlias: 'yourKeystoreAlias'
+#    jarsignerKeyPassword: '$(jarsignerKeyPassword)'
+#    zipalign: true
